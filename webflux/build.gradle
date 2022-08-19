@@ -1,0 +1,4 @@
+dependencies {
+    // https://mvnrepository.com/artifact/io.projectreactor/reactor-core
+    implementation group: 'io.projectreactor', name: 'reactor-core', version: '3.4.0'
+}

@@ -1,0 +1,21 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  thymeleaf:
+    cache: false
+minio:
+  access-key: KLMTESTMINIO
+  secret-key: EfCUREn/Cy9TMtjPq+XfTQ==
+  url: http://localhost:9090
+  def-bucket-name: xctest
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core: DEBUG #打印mongodb操作的具体语句，观察语句
+server:
+  port: 8087

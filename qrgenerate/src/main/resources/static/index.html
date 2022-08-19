@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot 文件上传、下载、二维码生成、解析</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/main.css" rel="stylesheet"/>
+</head>
+<body>
+
+<noscript>
+    <h2>浏览器不支持Javascript</h2>
+</noscript>
+
+<div class="upload-container">
+    <div class="upload-header">
+        <h2>文件上传、下载</h2>
+    </div>
+    <div class="upload-content">
+        <div class="single-upload">
+            <h3>单文件上传</h3>
+            <form id="singleUploadForm" name="singleUploadForm">
+                <input id="singleFileUploadInput" type="file" name="file" class="file-input" required/>
+                <button type="submit" class="primary submit-btn">Submit</button>
+            </form>
+            <div class="upload-response">
+                <div id="singleFileUploadError"></div>
+                <div id="singleFileUploadSuccess"></div>
+            </div>
+        </div>
+        <div class="multiple-upload">
+            <h3>多文件上传</h3>
+            <form id="multipleUploadForm" name="multipleUploadForm">
+                <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required/>
+                <button type="submit" class="primary submit-btn">Submit</button>
+            </form>
+            <div class="upload-response">
+                <div id="multipleFileUploadError"></div>
+                <div id="multipleFileUploadSuccess"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="upload-container">
+    <div class="upload-header">
+        <h2>二维码请求以及上传解析</h2>
+    </div>
+    <div class="upload-content">
+        <div class="single-upload">
+            <h3>二维码内容输入</h3>
+            <form id="qrcoderequest" name="qrcoderequest">
+                <input id="contentinput" type="text" name="content" class="file-input" required/>
+                <button type="submit" class="primary submit-btn">Submit</button>
+            </form>
+            <div class="upload-response">
+                <div id="qrcoderequestError"></div>
+                <div id="qrcoderequestSuccess"></div>
+            </div>
+        </div>
+        <div class="multiple-upload">
+            <h3>二维码图片上传解析</h3>
+            <form id="qrcodeupload" name="qrcodeupload">
+                <input id="qrpic" type="file" name="files" class="file-input"  required/>
+                <button type="submit" class="primary submit-btn">Submit</button>
+            </form>
+            <div class="upload-response">
+                <div id="qrcoderesolveError"></div>
+                <div id="qrcoderesolveSuccess"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<script src="../js/main.js"></script>
+</body>
+</html>

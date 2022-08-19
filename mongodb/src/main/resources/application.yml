@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      host: 116.63.222.148
+      port: 27017
+      database: test
+      username: test
+      password: test123
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core: DEBUG #打印mongodb操作的具体语句，观察语句

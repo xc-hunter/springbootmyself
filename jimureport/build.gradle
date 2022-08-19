@@ -1,0 +1,4 @@
+dependencies {
+// https://mvnrepository.com/artifact/org.jeecgframework.jimureport/jimureport-spring-boot-starter
+    implementation group: 'org.jeecgframework.jimureport', name: 'jimureport-spring-boot-starter', version: '1.5.2'
+}

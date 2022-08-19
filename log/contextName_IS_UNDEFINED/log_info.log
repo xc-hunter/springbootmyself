@@ -1,0 +1,13 @@
+2021-12-01 11:06:52.024 INFO  com.xc.datajpa.DatajpaApplication Line:55  - Starting DatajpaApplication using Java 1.8.0_291 on LAPTOP-DOSNGBH2 with PID 22756 (C:\project\springbootmyself\datajpa\build\classes\java\main started by klm01 in C:\project\springbootmyself)
+2021-12-01 11:06:52.039 INFO  com.xc.datajpa.DatajpaApplication Line:663 - The following profiles are active: dev
+2021-12-01 11:06:55.415 INFO  org.apache.coyote.http11.Http11NioProtocol Line:173 - Initializing ProtocolHandler ["http-nio-8086"]
+2021-12-01 11:06:55.417 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-12-01 11:06:55.417 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.48]
+2021-12-01 11:06:55.684 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-12-01 11:06:57.292 INFO  com.zaxxer.hikari.HikariDataSource Line:110 - HikariPool-1 - Starting...
+2021-12-01 11:06:59.263 INFO  com.zaxxer.hikari.HikariDataSource Line:123 - HikariPool-1 - Start completed.
+2021-12-01 11:07:02.918 INFO  org.apache.coyote.http11.Http11NioProtocol Line:173 - Starting ProtocolHandler ["http-nio-8086"]
+2021-12-01 11:07:02.981 INFO  com.xc.datajpa.DatajpaApplication Line:61  - Started DatajpaApplication in 12.181 seconds (JVM running for 14.15)
+2021-12-01 11:08:34.833 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-01 11:14:35.903 INFO  com.zaxxer.hikari.HikariDataSource Line:350 - HikariPool-1 - Shutdown initiated...
+2021-12-01 11:14:35.926 INFO  com.zaxxer.hikari.HikariDataSource Line:352 - HikariPool-1 - Shutdown completed.

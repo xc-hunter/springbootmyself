@@ -1,0 +1,18 @@
+#数据库地址
+datasource:
+  url: localhost:3306/springbatch
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${datasource.url}?useSLL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 10 # 最大连接数
+      max-lifetime: 1770000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+server:
+  port: 8086

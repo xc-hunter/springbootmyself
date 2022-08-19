@@ -1,0 +1,2 @@
+2021-12-01 11:07:02.012 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration Line:219 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-01 11:14:34.474 WARN  com.zaxxer.hikari.pool.HikariPool Line:788 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m5s74ms815µs600ns).

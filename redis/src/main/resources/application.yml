@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  redis:
+    host: 116.63.222.148
+    port: 6379
+    timeout: 5000 #连接超时时间
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    password: #Redis服务器连接密码，默认为空
+    database: 0 #Redis数据库索引，默认为0
