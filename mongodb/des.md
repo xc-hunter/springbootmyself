@@ -1,4 +1,9 @@
 # MongoDB
+## 参考
+1. [芋道MongoDB极简入门](https://www.iocoder.cn/MongoDB/install/)
+2. [你应该知道的MongoDB最佳实践](https://www.iocoder.cn/MongoDB/MongoDB-best-practices/)
+3. [芋道MongoDB](https://www.iocoder.cn/categories/MongoDB/)
+4. coke
 ## 介绍
 MongoDB：是NoSQL数据库中最像关系数据库的
 * 支持的数据格式类似于json的bjson格式，可以存储复杂的数据类型
