@@ -13,4 +13,6 @@ include 'jmh'
 include 'minioaccess'
 include 'springevent'
 include 'jimureport'
+include 'restdocs'
+include 'swagger'
 
