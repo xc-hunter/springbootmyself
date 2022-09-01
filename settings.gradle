@@ -15,4 +15,5 @@ include 'springevent'
 include 'jimureport'
 include 'restdocs'
 include 'swagger'
+include 'kafka'
 
