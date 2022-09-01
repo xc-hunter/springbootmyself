@@ -1,11 +1,8 @@
 package com.xc.kafka.config;
 
-import com.xc.kafka.message.DemoFirst;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.ConsumerRecordRecoverer;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
@@ -42,9 +39,9 @@ public class kafkaConfig {
         return new SeekToCurrentErrorHandler(recordRecoverer,backOff);
     }
 
-    @Bean
-    public NewTopic testTopic(){
-        return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).build();
-        //return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).partitions(3).replicas(2).compact().build();
-    }
+    //@Bean
+    //public NewTopic testTopic(){
+    //    return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).build();
+    //    //return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).partitions(3).replicas(2).compact().build();
+    //}
 }

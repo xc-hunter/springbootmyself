@@ -19,7 +19,7 @@ public class MessageConsumerFirst {
      * topicPartitions:使用手动主题分区分配,此侦听器的主题分区。与topics、topicPattern互斥,@TopicPartition 注解的数组。每个 @TopicPartition 注解，可配置监听的 Topic、队列、消费的开始位置
      * @param message
      */
-    @KafkaListener(topics = {DemoFirst.DEFAULT_TOPIC,"cx"},groupId = "one-"+DemoFirst.DEFAULT_TOPIC)
+    @KafkaListener(topics = {DemoFirst.DEFAULT_TOPIC},groupId = "one-"+DemoFirst.DEFAULT_TOPIC)
     public void onMessage(DemoFirst message){
         log.info("线程编号{},消费消息{}",Thread.currentThread().getId(),message);
     }
@@ -27,7 +27,8 @@ public class MessageConsumerFirst {
     @KafkaListener(topics = {DemoFirst.DEFAULT_TOPIC},groupId = "two-"+DemoFirst.DEFAULT_TOPIC)
     public void onMessageTwo(ConsumerRecord<Integer,String> consumerRecord){
         consumerRecord.headers().forEach(header -> System.out.println(header.key()+":::"+header.value()));
-        log.info("线程编号{},消费消息{},主题{},分区{},偏移{}",Thread.currentThread().getId(),consumerRecord.value(),consumerRecord.topic(),consumerRecord.partition(),consumerRecord.offset());
+        //线程编号25,消费消息DemoFirst(id=1662020495, info=1662020495),主题test_topic,分区0,偏移11,时间类型CreateTime,时间1662020495545ms
+        log.info("线程编号{},消费消息{},主题{},分区{},偏移{},时间类型{},时间{}",Thread.currentThread().getId(),consumerRecord.value(),consumerRecord.topic(),consumerRecord.partition(),consumerRecord.offset(),consumerRecord.timestampType().name,consumerRecord.timestamp());
     }
 
 }
