@@ -39,6 +39,30 @@ public class MessageProducerFirst {
         //},(error)->{
         //    log.error("生产消息时失败{}",error.getMessage());
         //});
+        //kafkaTemplate.send(DemoFirst.DEFAULT_TOPIC,demoFirst).addCallback(new ListenableFutureCallback<SendResult<Object, Object>>() {
+        // 此处为Throwable
+        //    @Override
+        //    public void onFailure(Throwable ex) {
+        //
+        //    }
+        //
+        //    @Override
+        //    public void onSuccess(SendResult<Object, Object> result) {
+        //
+        //    }
+        //});
+        //kafkaTemplate.send(DemoFirst.DEFAULT_TOPIC,demoFirst).addCallback(new KafkaSendCallback<>(){
+        //    // 此处为producerException,避免异常转换
+        //    @Override
+        //    public void onFailure(KafkaProducerException ex) {
+        //
+        //    }
+        //
+        //    @Override
+        //    public void onSuccess(Object result) {
+        //
+        //    }
+        //});
         return null;
     }
 

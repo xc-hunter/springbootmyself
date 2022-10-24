@@ -44,4 +44,101 @@ public class kafkaConfig {
     //    return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).build();
     //    //return TopicBuilder.name(DemoFirst.DEFAULT_TOPIC).partitions(3).replicas(2).compact().build();
     //}
+
+    /**
+     * RoutingKafkaTemplate
+     * use producer by topic pattern
+     * @param context
+     * @param pf
+     * @return
+     */
+    //@Bean
+    //public RoutingKafkaTemplate routingKafkaTemplate(GenericApplicationContext context, ProducerFactory<Object,Object> pf){
+    //    // 赋值原有的其他配置信息
+    //    Map<String,Object> configs=new HashMap<>(pf.getConfigurationProperties());
+    //    // 添加值序列化配置
+    //    configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
+    //    // 创建KafkaProducerFactory
+    //    DefaultKafkaProducerFactory<Object,Object> bytesPF=new DefaultKafkaProducerFactory<>(configs);
+    //    // 注册到上下文
+    //    context.registerBean(DefaultKafkaProducerFactory.class,"bytesPF",bytesPF);
+    //    // 配置route
+    //    Map<Pattern,ProducerFactory<Object,Object>> map=new LinkedHashMap<>();
+    //    map.put(Pattern.compile("BYTEA"),bytesPF);
+    //    map.put(Pattern.compile(".+"),pf);
+    //    // todo 配置文件是否取消序列化配置?
+    //    return new RoutingKafkaTemplate(map);
+    //}
+
+    /**
+     * 测试ReplyingKafkaTemplate
+     * @param template
+     * @return
+     */
+    //@Bean
+    //public ApplicationRunner runner(ReplyingKafkaTemplate<String, String, String> template) {
+    //    return args -> {
+    //        // waitForAssignment配合配置 auto.offset.reset=latest,以避免在容器初始化之前发送请求和回复
+    //        // spring kafka 2.8.8版本才具备等待waitForAssignment方法
+    //        //if (!template.waitForAssignment(Duration.ofSeconds(10))) {
+    //        //    throw new IllegalStateException("Reply container did not initialize");
+    //        //}
+    //        // 初始化测试信息发送到topic为kRequests,content为foo
+    //        ProducerRecord<String, String> record = new ProducerRecord<>("kRequests", "foo");
+    //        // 发送结果
+    //        RequestReplyFuture<String, String, String> replyFuture = template.sendAndReceive(record);
+    //        // 获取发送结果 get阻塞获取
+    //        SendResult<String, String> sendResult = replyFuture.getSendFuture().get(10, TimeUnit.SECONDS);
+    //        System.out.println("Sent ok: " + sendResult.getRecordMetadata());
+    //        // RequestReplyFuture get获取到的是通过set设置的内容（可为result、exception）
+    //        ConsumerRecord<String, String> consumerRecord = replyFuture.get(10, TimeUnit.SECONDS);
+    //        System.out.println("Return value: " + consumerRecord.value());
+    //    };
+    //}
+
+    /**
+     * 配置ReplyingKafkaTemplate
+     * @param pf 生产者工厂
+     * @param repliesContainer 回复消费监听
+     * @return
+     */
+    //@Bean
+    //public ReplyingKafkaTemplate<String,String,String> replyingKafkaTemplate(ProducerFactory<String,String> pf, ConcurrentMessageListenerContainer<String,String> repliesContainer){
+    //    return new ReplyingKafkaTemplate<>(pf,repliesContainer);
+    //}
+
+    ///**
+    // * 监听器容器
+    // * @param containerFactory
+    // * @return
+    // */
+    //@Bean
+    //public ConcurrentMessageListenerContainer<String, String> repliesContainer(
+    //        ConcurrentKafkaListenerContainerFactory<String, String> containerFactory) {
+    //
+    //    // 定义监听的topic,可为数组
+    //    ConcurrentMessageListenerContainer<String, String> repliesContainer =
+    //            containerFactory.createContainer("kReplies");
+    //    // 消费组设置
+    //    repliesContainer.getContainerProperties().setGroupId("repliesGroup");
+    //    repliesContainer.setAutoStartup(false);
+    //    return repliesContainer;
+    //}
+
+    //@Bean
+    //public NewTopic kRequests() {
+    //    return TopicBuilder.name("kRequests")
+    //            .partitions(10)
+    //            .replicas(2)
+    //            .build();
+    //}
+    //
+    //@Bean
+    //public NewTopic kReplies() {
+    //    return TopicBuilder.name("kReplies")
+    //            .partitions(10)
+    //            .replicas(2)
+    //            .build();
+    //}
+
 }

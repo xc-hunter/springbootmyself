@@ -17,6 +17,7 @@ spring:
         spring:
           json:
             trusted:
+              # JsonDeserializer使用时需要配置信任package,否则反序列化Error
               packages: com.xc.kafka.message
     # Kafka Consumer Listener 监听器配置
     listener:
