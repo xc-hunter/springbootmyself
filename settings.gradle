@@ -16,4 +16,6 @@ include 'jimureport'
 include 'restdocs'
 include 'swagger'
 include 'kafka'
+include 'adminserver'
+include 'adminclient'
 

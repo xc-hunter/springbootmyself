@@ -1,0 +1,9 @@
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+    implementation group: 'org.springframework.kafka', name: 'spring-kafka'
+    // 使用spring-kafka-test
+    // Spring Boot 2.3.5版本引入的Jaskson 2.11.3以及之后的版本会引入不兼容的Scala
+    //https://docs.spring.io/spring-kafka/docs/2.5.9.RELEASE/reference/html/#jacksonscala-incompatibility
+    testImplementation "org.scala-lang:scala-library:2.12.11"
+    testImplementation "org.scala-lang:scala-reflect:2.12.11"
+}

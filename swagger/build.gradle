@@ -1,0 +1,9 @@
+dependencies {
+    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+//    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    // https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter
+    // include springfox-boot-starter dependency
+    implementation group: 'com.github.xiaoymin', name: 'knife4j-spring-boot-starter', version: '3.0'
+
+
+}

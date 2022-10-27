@@ -1,0 +1,5 @@
+dependencies {
+    // https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server
+    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: '2.5.2'
+
+}
