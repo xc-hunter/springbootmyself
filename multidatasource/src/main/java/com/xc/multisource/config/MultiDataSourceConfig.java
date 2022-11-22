@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+// 所有关键Bean配置于此，用于AutoConfiguration
 @Configuration
 @EnableConfigurationProperties(MultiDataSourceProperties.class)
 public class MultiDataSourceConfig {
@@ -38,7 +39,9 @@ public class MultiDataSourceConfig {
         dataSourcePropMap.forEach((lookupKey,dsProp) -> {
             dataSourceMap.put(lookupKey, createDs(dsProp));
         });
+        // Map<String,DataSource>
         multiDataSource.setTargetDataSources(dataSourceMap);
+        // 默认数据源设置
         multiDataSource.setDefaultTargetDataSource(dataSourceMap.get(ConstHolder.DEFAULT));
         return multiDataSource;
     }
@@ -72,7 +75,7 @@ public class MultiDataSourceConfig {
                     field.setAccessible(true);
                     field.set(finalDataSource,dataSourceProp.get(field.getName()));
                 },field -> {
-                    // 过滤掉 其中的一个属性以及为空的属性
+                    // 过滤掉其中的一个属性以及为空的属性
                     if(Objects.equals(dataSourceProp.get(DS_TYPE),field.getName())){
                         return false;
                     }
