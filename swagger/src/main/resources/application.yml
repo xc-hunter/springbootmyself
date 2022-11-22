@@ -1,5 +1,5 @@
 server:
   port: 18082
-#logging:
-#  level:
-#    org.springframework.*: debug
+logging:
+  level:
+    root: debug
