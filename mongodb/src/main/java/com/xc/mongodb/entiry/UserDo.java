@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+// UserDo UserDao使用通同样的collection
+//
 @Data
 @Document(collection = "user")
 public class UserDo {

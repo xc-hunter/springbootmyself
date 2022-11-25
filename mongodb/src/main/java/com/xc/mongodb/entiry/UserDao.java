@@ -16,6 +16,7 @@ public class UserDao {
     @AutoIncId
     private long id;
 
+    //@Indexed
     private String username;
 
     private String password;
@@ -24,3 +25,19 @@ public class UserDao {
 
 
 }
+ //db.user.find()
+ //        [
+ //        {
+ //        _id: Long("1"),
+ //        username: 'do',
+ //        password: 'do456',
+ //        createTime: ISODate("2022-11-25T03:34:22.567Z"),
+ //        _class: 'com.xc.mongodb.entiry.UserDo'
+ //        },
+ //        {
+ //        _id: Long("2"),
+ //        username: 'dao',
+ //        password: 'dao123',
+ //        createTime: ISODate("2022-11-25T03:34:22.567Z"),
+ //        _class: 'com.xc.mongodb.entiry.UserDao'
+ //        }

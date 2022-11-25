@@ -61,3 +61,38 @@ MongoDB自带的主键选择是ObjectId类型，需要占用12字节。占用空
 对应实体类中的Id字段需要为String类型
 "_id" : ObjectId("6103a1409553ef62cf57915f")
 ```
+## 命令
+### 准备数据库
+* docker run --name mongodb -p 27017:27017 -v $PWD/db:/data/db -d mongo:latest
+* docker exec -it mongodb /bin/sh
+* bin/mongosh 或者bin/mongo 连接mongodb
+* use test 切换到test数据库,如果不存在则新建test数据库
+* db.createUser({user:"test",pwd:"test123",roles:[{role:"readWrite",db:"test"}]}) 创建用户，赋予角色
+* db.auth("test","test123") 数据库认证、安全模式
+### 数据操作
+#### 修改、增加、删除
+* db.collectionName.save({fieldName1: 'value1', fieldName1: value2, fieldName3: true});
+* db.collectionName.remove({fieldName1: 'value1'}); 
+* db.people.update({age: 18}, {$set: {name: 'changeName'}}, false, true);
+  相当于：update people set name = 'changeName' where age = 18;
+  db.people.update({name: 'zhangs'}, {$inc: {age: 12}}, false, true);
+  相当于：update people set age = age + 12 where name = 'zhangs';
+  db.people.update({name: 'zhangs'}, {$inc: {age: 12}, $set: {name: 'hoho'}}, false, true);
+  相当于：update people set age = age + 12, name = 'hoho' where name = 'zhangs';
+#### 查询
+* show collections 显示当前数据库的所有Collection
+* db.collectionName.find() equals select * from collectionName
+* db.collectionName.distinct(fieldName) equeals select distinct name from collectionName
+* db.collectionName.find({fieldName:val}) equeals select * from collectionName where fieldName=val
+* db find 对于数字存在 find({fieldName:{$gte: 1, $lte: 4}}) 1<=fieldName<=4 gt gte le lte
+* db find 对于字符串 like find(fieldName:/mongo/)  equals where fieldName lile '%mongo%' 包含 mongo
+* db find 对于字符串 like find(fieldName:/^mongo/)  equals where fieldName lile 'mongo%'  以mongo开头
+* 查询指定列 db.collectionName.find({},{name:1,age:1}) equals select name,age from collectionName
+* 排序 db.collectionName.find().sort({fieldName:1/-1}) 1为升序 -1 为降序
+* 查询前5条 db.collectionName.find().limit(5)
+* 跳过前10条 db.collectionName.find().skip(5)
+### 索引
+* db.collectionName.ensureIndex({fieldName1: 1}); 
+* db.collectionName.ensureIndex({fieldName1: 1, fieldName2: -1}); //联合索引
+* db.collectionName.ensureIndex({"fieldName1":1},{"unique":true}); //唯一索引
+* db.collectionName.getIndexes()

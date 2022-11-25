@@ -57,6 +57,7 @@ public class AutoIncIdGeneratorByBaseClass extends AbstractMongoEventListener {
             //此处采用查找并更新，使用了Query、Update、FindAndModifyOptions
             //Update指定更新键和更新策略
             Update update=new Update();
+            // +1
             update.inc("colid",1);
             //选项，定义为更新，并返回新值
             FindAndModifyOptions options=new FindAndModifyOptions();
@@ -64,6 +65,10 @@ public class AutoIncIdGeneratorByBaseClass extends AbstractMongoEventListener {
             options.upsert(true);
             options.returnNew(true);
             synchronized (this){
+                // colnam:是需要生成自定义id的collection_name
+                // findAndModify using query: { "colname" : "profile"} fields: Document{{}} sort: null for class: class com.xc.mongodb.entiry.Sequence
+                // and update: { "$inc" : { "colid" : 1}} in collection: sequence
+                // collection: sequence 全局的
                 Sequence seq=mongo.findAndModify(query,update,options,Sequence.class);
                 return seq.getColid();
             }
