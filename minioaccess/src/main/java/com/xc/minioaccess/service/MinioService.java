@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public interface MinioService {
-    String upload(MultipartFile file, String fileName);
+
+    String pureUpload(MultipartFile file, String fileName);
+
+    String uploadGetPublicUrl(MultipartFile file, String fileName);
 
     String getUrl(String fileName, int i, TimeUnit days);
 

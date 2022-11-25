@@ -2,10 +2,7 @@ package com.xc.minioaccess.service.impl;
 
 import com.xc.minioaccess.config.MinioConfig;
 import com.xc.minioaccess.service.MinioService;
-import io.minio.GetPresignedObjectUrlArgs;
-import io.minio.MinioClient;
-import io.minio.PostPolicy;
-import io.minio.PutObjectArgs;
+import io.minio.*;
 import io.minio.errors.*;
 import io.minio.http.Method;
 import lombok.RequiredArgsConstructor;
@@ -29,16 +26,55 @@ public class MinioServiceImpl implements MinioService {
     private final MinioConfig minioConfig;
     private final MinioClient minioClient;
 
-    /**
-     * @description: 上传文件
-     * @dateTime: 2021/5/13 14:17
-     */
     @Override
-    public String upload(MultipartFile file, String fileName) {
+    public String pureUpload(MultipartFile file, String fileName) {
         String res=null;
         // 使用putObject上传一个文件到存储桶中。
         try {
+            System.out.println(fileName);
             InputStream inputStream = file.getInputStream();
+            // bucketName、fileName相同的情况下，PUT会对内容进行覆盖
+            minioClient.putObject(PutObjectArgs.builder()
+                    .bucket(minioConfig.getDefBucketName())
+                    .object(fileName)
+                    .stream(inputStream, file.getSize(), -1)
+                    .contentType(file.getContentType())
+                    .build());
+            res=fileName;
+        } catch (ErrorResponseException e) {
+            e.printStackTrace();
+        } catch (InsufficientDataException e) {
+            e.printStackTrace();
+        } catch (InternalException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (InvalidResponseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (XmlParserException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    /**
+     * @description: 上传文件返回可公开访问的url 需要Bucket进行提前的public设置
+     * @dateTime: 2021/5/13 14:17
+     */
+    @Override
+    public String uploadGetPublicUrl(MultipartFile file, String fileName) {
+        String res=null;
+        // 使用putObject上传一个文件到存储桶中。
+        try {
+            System.out.println(fileName);
+            InputStream inputStream = file.getInputStream();
+            // bucketName、fileName相同的情况下，PUT会对内容进行覆盖
             minioClient.putObject(PutObjectArgs.builder()
                     .bucket(minioConfig.getDefBucketName())
                     .object(fileName)
@@ -67,6 +103,8 @@ public class MinioServiceImpl implements MinioService {
         }
         return res;
     }
+
+
 
     /**
      * @description: 获取上传临时签名
