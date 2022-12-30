@@ -1,8 +1,10 @@
 package com.xc.kafka.config;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.ConsumerRecordRecoverer;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
@@ -125,13 +127,22 @@ public class kafkaConfig {
     //    return repliesContainer;
     //}
 
-    //@Bean
-    //public NewTopic kRequests() {
-    //    return TopicBuilder.name("kRequests")
-    //            .partitions(10)
-    //            .replicas(2)
-    //            .build();
-    //}
+    @Bean
+    public NewTopic kRequests() {
+        return TopicBuilder.name("kRequests")
+                .partitions(10)
+                // 配置的副本数replicas需要保证<=broker数量
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic testTopic(){
+        return TopicBuilder.name("test_topic")
+                .partitions(3)
+                .replicas(1)
+                .build();
+    }
     //
     //@Bean
     //public NewTopic kReplies() {

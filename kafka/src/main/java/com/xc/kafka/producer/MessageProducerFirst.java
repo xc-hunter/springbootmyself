@@ -4,6 +4,8 @@ import com.xc.kafka.message.DemoFirst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaProducerException;
+import org.springframework.kafka.core.KafkaSendCallback;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
@@ -71,10 +73,29 @@ public class MessageProducerFirst {
      * @param id
      * @return
      */
-    public ListenableFuture<SendResult<Object,Object>> asyncSend(Integer id){
+    public ListenableFuture<SendResult<Object,Object>> doAsyncSend(Integer id){
         DemoFirst demoFirst=new DemoFirst();
         demoFirst.setId(id);
         demoFirst.setInfo(id.toString());
         return kafkaTemplate.send(DemoFirst.DEFAULT_TOPIC,demoFirst);
+    }
+
+    /**
+     * 异步发送,同时使用回调进行处理
+     * todo 发送时是否统一转换为一个类型，再进行发送
+     * @param id
+     */
+    public void asyncSendAndHandler(Integer id){
+        doAsyncSend(id).addCallback(new KafkaSendCallback<Object,Object>(){
+            @Override
+            public void onFailure(KafkaProducerException ex) {
+
+            }
+
+            @Override
+            public void onSuccess(SendResult<Object, Object> result) {
+                // handleSendSuccess(result)
+            }
+        });
     }
 }
