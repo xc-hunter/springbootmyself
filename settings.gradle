@@ -20,4 +20,5 @@ include 'adminserver'
 include 'adminclient'
 include 'poddiscovery'
 include 'multidatasource'
+include 'sensitivehandle'
 
